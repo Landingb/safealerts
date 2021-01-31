@@ -8,6 +8,6 @@ public class SafetalertsApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SafetalertsApplication.class, args);
-	}
 
+	}
 }

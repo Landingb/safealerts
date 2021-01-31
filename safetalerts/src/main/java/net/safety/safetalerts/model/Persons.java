@@ -1,6 +1,10 @@
 package net.safety.safetalerts.model;
 
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class Persons {
+
     private String firstName;
     private String lastName;
     private String address;
@@ -10,6 +14,7 @@ public class Persons {
     private String email;
 
     private MedicalRecords medicalRecords=new MedicalRecords();
+    @JsonIgnore
     private FireStations fireStations=new FireStations();
 
     public MedicalRecords getMedicalRecords() {
@@ -86,10 +91,15 @@ public class Persons {
 
     @Override
     public String toString() {
-        return "Person{" +
-                "firstName=" + firstName +
-                ", lastName=" + lastName +
-                ", city=" + city +
+        return "Persons{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", address='" + address + '\'' +
+                ", city='" + city + '\'' +
+                ", zip=" + zip +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+
                 '}';
     }
 }

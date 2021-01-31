@@ -1,6 +1,6 @@
 package net.safety.safetalerts.model;
 
-import java.util.Date;
+
 import java.util.List;
 
 public class MedicalRecords {
