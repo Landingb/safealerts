@@ -1,0 +1,23 @@
+{
+    "persons": [
+        { "firstName":"Firstnametest1", "lastName":"Lastnametest1", "address":"adresstest1", "city":"Citytest1", "zip":"ziptest1", "phone":"phonetest1", "email":"emailtest1@email.com" },
+        { "firstName":"Firstnametest11", "lastName":"Lastnametest1", "address":"adresstest1", "city":"Citytest1", "zip":"ziptest1", "phone":"phonetest1", "email":"emailtest1@email.com" },
+        { "firstName":"Firstnametest2", "lastName":"Lastnametest2", "address":"adresstest2", "city":"adresstest2", "zip":"adresstest2", "phone":"phonetest2", "email":"emailtest2@email.com" },
+        { "firstName":"Firstnametestchildinfo", "lastName":"Lastnametestchildinfo", "address":"adresstestchildinfo", "city":"Citytest1", "zip":"ziptest1", "phone":"phonetest1", "email":"emailtest1@email.com" },
+        { "firstName":"Firstnametest3", "lastName":"Lastnametest3", "address":"adresstest3", "city":"adresstest3", "zip":"adresstest3", "phone":"phonetest3", "email":"emailtest3@email.com" },
+        { "firstName":"Firstnametestdelete", "lastName":"Lastnametestdelete", "address":"", "city":"", "zip":"", "phone":"", "email":"" }     
+	], 
+    "firestations": [
+		{ "address":"adresstest1", "station":"1" },
+    	{ "address":"adresstest2", "station":"2" },
+    	{ "address":"delete", "station":"5" },
+    	{ "address":"delete2", "station":"delete2" },    	
+    	{ "address":"", "station":"delete" }
+    	],
+    "medicalrecords": [
+        { "firstName":"Firstnametest1", "lastName":"Lastnametest1", "birthdate":"01/01/2001", "medications":["med1"], "allergies":["allergi1"] },
+        { "firstName":"Firstnametest2", "lastName":"Lastnametest2", "birthdate":"02/02/2002", "medications":["med2"], "allergies":["allergi2"] },
+        { "firstName":"firstnamedeletetest", "lastName":"lastnamedeletetest", "birthdate":"02/18/2012", "medications":[], "allergies":["peanut"] },
+        { "firstName":"Firstnametestchildinfo", "lastName":"Lastnametestchildinfo", "birthdate":"01/01/2020", "medications":[], "allergies":["peanut"] }
+        ] 
+}

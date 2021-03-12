@@ -1,0 +1,132 @@
+2021-02-06 15:02:41 [main] INFO  AlertsApplication:55 - Starting AlertsApplication on LAPTOP-A0IHC49J with PID 9424 (C:\Git\SafetyAlerts-a724704f5f5bebf7d65c1d912b2855c4da0403ca\target\classes started by landi in C:\Git\SafetyAlerts-a724704f5f5bebf7d65c1d912b2855c4da0403ca)
+2021-02-06 15:02:41 [main] INFO  AlertsApplication:651 - No active profile set, falling back to default profiles: default
+2021-02-06 15:02:42 [main] INFO  TomcatWebServer:92 - Tomcat initialized with port(s): 8080 (http)
+2021-02-06 15:02:42 [main] INFO  Http11NioProtocol:173 - Initializing ProtocolHandler ["http-nio-8080"]
+2021-02-06 15:02:42 [main] INFO  StandardService:173 - Starting service [Tomcat]
+2021-02-06 15:02:42 [main] INFO  StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/9.0.33]
+2021-02-06 15:02:43 [main] INFO  [/]:173 - Initializing Spring embedded WebApplicationContext
+2021-02-06 15:02:43 [main] INFO  ContextLoader:284 - Root WebApplicationContext: initialization completed in 1687 ms
+2021-02-06 15:02:43 [main] INFO  LoadPersonsService:63 - Loaded Json objects
+2021-02-06 15:02:43 [main] INFO  ThreadPoolTaskExecutor:181 - Initializing ExecutorService 'applicationTaskExecutor'
+2021-02-06 15:02:43 [main] INFO  Http11NioProtocol:173 - Starting ProtocolHandler ["http-nio-8080"]
+2021-02-06 15:02:43 [main] INFO  TomcatWebServer:204 - Tomcat started on port(s): 8080 (http) with context path ''
+2021-02-06 15:02:44 [main] INFO  TomcatWebServer:92 - Tomcat initialized with port(s): 9090 (http)
+2021-02-06 15:02:44 [main] INFO  Http11NioProtocol:173 - Initializing ProtocolHandler ["http-nio-9090"]
+2021-02-06 15:02:44 [main] INFO  StandardService:173 - Starting service [Tomcat]
+2021-02-06 15:02:44 [main] INFO  StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/9.0.33]
+2021-02-06 15:02:44 [main] INFO  [/]:173 - Initializing Spring embedded WebApplicationContext
+2021-02-06 15:02:44 [main] INFO  ContextLoader:284 - Root WebApplicationContext: initialization completed in 122 ms
+2021-02-06 15:02:44 [main] INFO  EndpointLinksResolver:58 - Exposing 4 endpoint(s) beneath base path '/actuator'
+2021-02-06 15:02:44 [main] INFO  Http11NioProtocol:173 - Starting ProtocolHandler ["http-nio-9090"]
+2021-02-06 15:02:44 [main] INFO  TomcatWebServer:204 - Tomcat started on port(s): 9090 (http) with context path ''
+2021-02-06 15:02:44 [main] INFO  AlertsApplication:61 - Started AlertsApplication in 3.255 seconds (JVM running for 5.134)
+2021-02-06 15:04:01 [http-nio-8080-exec-2] INFO  [/]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-02-06 15:04:01 [http-nio-8080-exec-2] INFO  DispatcherServlet:525 - Initializing Servlet 'dispatcherServlet'
+2021-02-06 15:04:01 [http-nio-8080-exec-2] INFO  DispatcherServlet:547 - Completed initialization in 8 ms
+2021-02-06 15:04:01 [http-nio-8080-exec-2] INFO  AlertController:25 - childAlert : success
+2021-02-06 15:04:15 [http-nio-8080-exec-3] INFO  Http11Processor:175 - Error parsing HTTP request header
+ Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level.
+java.lang.IllegalArgumentException: Invalid character found in the request target. The valid characters are defined in RFC 7230 and RFC 3986
+	at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:488) ~[tomcat-embed-core-9.0.33.jar:9.0.33]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:260) [tomcat-embed-core-9.0.33.jar:9.0.33]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) [tomcat-embed-core-9.0.33.jar:9.0.33]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868) [tomcat-embed-core-9.0.33.jar:9.0.33]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1594) [tomcat-embed-core-9.0.33.jar:9.0.33]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.33.jar:9.0.33]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) [?:?]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) [?:?]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.33.jar:9.0.33]
+	at java.lang.Thread.run(Thread.java:830) [?:?]
+2021-02-06 15:04:27 [http-nio-8080-exec-5] INFO  AlertController:25 - childAlert : success
+2021-02-06 15:04:34 [http-nio-8080-exec-6] INFO  CommunityEmailController:29 - getCommunityEmail sucess
+2021-02-06 15:04:49 [http-nio-8080-exec-8] INFO  PersonController:31 - Get list person
+2021-02-06 15:04:54 [http-nio-8080-exec-7] INFO  PersonController:75 - getFireStationCoverage sucess
+2021-02-06 15:05:01 [http-nio-8080-exec-9] INFO  FireController:34 - getPersonInfo sucess
+2021-02-06 15:05:07 [http-nio-8080-exec-10] INFO  AlertController:25 - childAlert : success
+2021-02-06 15:05:10 [http-nio-8080-exec-1] INFO  FireController:33 - getFireListPerson sucess
+2021-02-06 15:06:03 [http-nio-8080-exec-2] INFO  FireController:33 - getFireListPerson sucess
+2021-02-06 15:06:45 [http-nio-8080-exec-3] INFO  AlertController:25 - childAlert : success
+2021-02-06 19:01:54 [main] INFO  AlertsApplication:55 - Starting AlertsApplication on LAPTOP-A0IHC49J with PID 1220 (C:\Git\SafetyAlerts-a724704f5f5bebf7d65c1d912b2855c4da0403ca\target\classes started by landi in C:\Git\SafetyAlerts-a724704f5f5bebf7d65c1d912b2855c4da0403ca)
+2021-02-06 19:01:54 [main] INFO  AlertsApplication:651 - No active profile set, falling back to default profiles: default
+2021-02-06 19:01:56 [main] INFO  AlertsApplication:55 - Starting AlertsApplication on LAPTOP-A0IHC49J with PID 19136 (C:\Git\SafetyAlerts-a724704f5f5bebf7d65c1d912b2855c4da0403ca\target\classes started by landi in C:\Git\SafetyAlerts-a724704f5f5bebf7d65c1d912b2855c4da0403ca)
+2021-02-06 19:01:56 [main] INFO  AlertsApplication:651 - No active profile set, falling back to default profiles: default
+2021-02-06 19:01:56 [main] INFO  TomcatWebServer:92 - Tomcat initialized with port(s): 8080 (http)
+2021-02-06 19:01:56 [main] INFO  Http11NioProtocol:173 - Initializing ProtocolHandler ["http-nio-8080"]
+2021-02-06 19:01:56 [main] INFO  StandardService:173 - Starting service [Tomcat]
+2021-02-06 19:01:56 [main] INFO  StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/9.0.33]
+2021-02-06 19:01:56 [main] INFO  [/]:173 - Initializing Spring embedded WebApplicationContext
+2021-02-06 19:01:56 [main] INFO  ContextLoader:284 - Root WebApplicationContext: initialization completed in 1933 ms
+2021-02-06 19:01:57 [main] INFO  LoadPersonsService:63 - Loaded Json objects
+2021-02-06 19:01:57 [main] INFO  ThreadPoolTaskExecutor:181 - Initializing ExecutorService 'applicationTaskExecutor'
+2021-02-06 19:01:57 [main] INFO  Http11NioProtocol:173 - Starting ProtocolHandler ["http-nio-8080"]
+2021-02-06 19:01:57 [main] INFO  TomcatWebServer:92 - Tomcat initialized with port(s): 8080 (http)
+2021-02-06 19:01:57 [main] INFO  Http11NioProtocol:173 - Initializing ProtocolHandler ["http-nio-8080"]
+2021-02-06 19:01:57 [main] INFO  StandardService:173 - Starting service [Tomcat]
+2021-02-06 19:01:57 [main] INFO  StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/9.0.33]
+2021-02-06 19:01:58 [main] INFO  [/]:173 - Initializing Spring embedded WebApplicationContext
+2021-02-06 19:01:58 [main] INFO  ContextLoader:284 - Root WebApplicationContext: initialization completed in 1792 ms
+2021-02-06 19:01:58 [main] INFO  TomcatWebServer:204 - Tomcat started on port(s): 8080 (http) with context path ''
+2021-02-06 19:01:58 [main] INFO  TomcatWebServer:92 - Tomcat initialized with port(s): 9090 (http)
+2021-02-06 19:01:58 [main] INFO  Http11NioProtocol:173 - Initializing ProtocolHandler ["http-nio-9090"]
+2021-02-06 19:01:58 [main] INFO  StandardService:173 - Starting service [Tomcat]
+2021-02-06 19:01:58 [main] INFO  StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/9.0.33]
+2021-02-06 19:01:58 [main] INFO  [/]:173 - Initializing Spring embedded WebApplicationContext
+2021-02-06 19:01:58 [main] INFO  ContextLoader:284 - Root WebApplicationContext: initialization completed in 161 ms
+2021-02-06 19:01:58 [main] INFO  EndpointLinksResolver:58 - Exposing 4 endpoint(s) beneath base path '/actuator'
+2021-02-06 19:01:58 [main] INFO  LoadPersonsService:63 - Loaded Json objects
+2021-02-06 19:01:58 [main] INFO  Http11NioProtocol:173 - Starting ProtocolHandler ["http-nio-9090"]
+2021-02-06 19:01:58 [main] INFO  TomcatWebServer:204 - Tomcat started on port(s): 9090 (http) with context path ''
+2021-02-06 19:01:58 [main] INFO  AlertsApplication:61 - Started AlertsApplication in 3.992 seconds (JVM running for 6.331)
+2021-02-06 19:01:58 [main] INFO  ThreadPoolTaskExecutor:181 - Initializing ExecutorService 'applicationTaskExecutor'
+2021-02-06 19:01:58 [main] INFO  Http11NioProtocol:173 - Starting ProtocolHandler ["http-nio-8080"]
+2021-02-06 19:01:59 [main] INFO  Http11NioProtocol:173 - Pausing ProtocolHandler ["http-nio-8080"]
+2021-02-06 19:01:59 [main] INFO  StandardService:173 - Stopping service [Tomcat]
+2021-02-06 19:01:59 [main] INFO  Http11NioProtocol:173 - Stopping ProtocolHandler ["http-nio-8080"]
+2021-02-06 19:01:59 [main] INFO  Http11NioProtocol:173 - Destroying ProtocolHandler ["http-nio-8080"]
+2021-02-06 19:01:59 [main] INFO  ConditionEvaluationReportLoggingListener:136 - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2021-02-06 19:01:59 [main] ERROR LoggingFailureAnalysisReporter:40 - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2021-02-06 19:01:59 [main] WARN  DisposableBeanAdapter:267 - Invocation of destroy method failed on bean with name 'tomcatMetricsBinder': java.lang.NullPointerException
+2021-02-06 19:01:59 [main] INFO  ThreadPoolTaskExecutor:218 - Shutting down ExecutorService 'applicationTaskExecutor'
+2021-02-06 19:02:04 [SpringContextShutdownHook] INFO  ThreadPoolTaskExecutor:218 - Shutting down ExecutorService 'applicationTaskExecutor'
+2021-02-06 19:02:08 [main] INFO  AlertsApplication:55 - Starting AlertsApplication on LAPTOP-A0IHC49J with PID 19336 (C:\Git\SafetyAlerts-a724704f5f5bebf7d65c1d912b2855c4da0403ca\target\classes started by landi in C:\Git\SafetyAlerts-a724704f5f5bebf7d65c1d912b2855c4da0403ca)
+2021-02-06 19:02:08 [main] INFO  AlertsApplication:651 - No active profile set, falling back to default profiles: default
+2021-02-06 19:02:09 [main] INFO  TomcatWebServer:92 - Tomcat initialized with port(s): 8080 (http)
+2021-02-06 19:02:09 [main] INFO  Http11NioProtocol:173 - Initializing ProtocolHandler ["http-nio-8080"]
+2021-02-06 19:02:09 [main] INFO  StandardService:173 - Starting service [Tomcat]
+2021-02-06 19:02:09 [main] INFO  StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/9.0.33]
+2021-02-06 19:02:09 [main] INFO  [/]:173 - Initializing Spring embedded WebApplicationContext
+2021-02-06 19:02:09 [main] INFO  ContextLoader:284 - Root WebApplicationContext: initialization completed in 1189 ms
+2021-02-06 19:02:09 [main] INFO  LoadPersonsService:63 - Loaded Json objects
+2021-02-06 19:02:09 [main] INFO  ThreadPoolTaskExecutor:181 - Initializing ExecutorService 'applicationTaskExecutor'
+2021-02-06 19:02:10 [main] INFO  Http11NioProtocol:173 - Starting ProtocolHandler ["http-nio-8080"]
+2021-02-06 19:02:10 [main] INFO  TomcatWebServer:204 - Tomcat started on port(s): 8080 (http) with context path ''
+2021-02-06 19:02:10 [main] INFO  TomcatWebServer:92 - Tomcat initialized with port(s): 9090 (http)
+2021-02-06 19:02:10 [main] INFO  Http11NioProtocol:173 - Initializing ProtocolHandler ["http-nio-9090"]
+2021-02-06 19:02:10 [main] INFO  StandardService:173 - Starting service [Tomcat]
+2021-02-06 19:02:10 [main] INFO  StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/9.0.33]
+2021-02-06 19:02:10 [main] INFO  [/]:173 - Initializing Spring embedded WebApplicationContext
+2021-02-06 19:02:10 [main] INFO  ContextLoader:284 - Root WebApplicationContext: initialization completed in 119 ms
+2021-02-06 19:02:10 [main] INFO  EndpointLinksResolver:58 - Exposing 4 endpoint(s) beneath base path '/actuator'
+2021-02-06 19:02:10 [main] INFO  Http11NioProtocol:173 - Starting ProtocolHandler ["http-nio-9090"]
+2021-02-06 19:02:10 [main] INFO  TomcatWebServer:204 - Tomcat started on port(s): 9090 (http) with context path ''
+2021-02-06 19:02:10 [main] INFO  AlertsApplication:61 - Started AlertsApplication in 2.616 seconds (JVM running for 4.145)
+2021-02-06 19:02:14 [http-nio-8080-exec-1] INFO  [/]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-02-06 19:02:14 [http-nio-8080-exec-1] INFO  DispatcherServlet:525 - Initializing Servlet 'dispatcherServlet'
+2021-02-06 19:02:14 [http-nio-8080-exec-1] INFO  DispatcherServlet:547 - Completed initialization in 8 ms
+2021-02-06 19:02:14 [http-nio-8080-exec-1] INFO  PersonController:43 - Get list medical record
+2021-02-06 19:02:17 [http-nio-8080-exec-3] INFO  FireController:34 - getPersonInfo sucess
