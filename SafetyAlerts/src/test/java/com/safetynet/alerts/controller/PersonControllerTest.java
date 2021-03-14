@@ -1,7 +1,10 @@
-package controller;
+package com.safetynet.alerts.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.safetynet.alerts.model.Person;
 import com.safetynet.alerts.model.url.CommunityEmail;
 import com.safetynet.alerts.model.url.InfoPersonFull;
+import com.safetynet.alerts.services.PersonService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -13,19 +16,16 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import static org.mockito.ArgumentMatchers.any;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.safetynet.alerts.model.Person;
-import com.safetynet.alerts.services.PersonService;
+import static org.mockito.ArgumentMatchers.any;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@SpringBootTest
 @RunWith(MockitoJUnitRunner.class)
+@SpringBootTest
 @AutoConfigureMockMvc
 class PersonControllerTest {
 
@@ -43,7 +43,7 @@ class PersonControllerTest {
     String cityConst = "citytest";
     String zipConst = "ziptest";
     String phoneConst = "phone";
-    String emailConst = "emailtest@test.us";
+    String emailConst = "emailtest@test.fr";
 
     @BeforeEach
     public void setUpEach() {
@@ -60,6 +60,41 @@ class PersonControllerTest {
     }
 
     @Test
+    public void PersonController_DeletePersonTest() throws Exception {
+
+        // GIVEN
+
+        Mockito.when(personService.delete(any(String.class), any(String.class))).thenReturn(true);
+        // WHEN
+        // THEN
+        this.mockMvc
+                .perform(delete("/person/delete?firstname=" + firstNameConst + "&lastname=" + lastNameConst)
+                        .content(asJsonString(new Person(firstNameConst, lastNameConst, addressConst, cityConst,
+                                zipConst, phoneConst, emailConst)))
+                        .contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
+                .andExpect(content().string("Deleted person : firstnametest lastnametest"))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void PersonController_PutPersonTest() throws Exception {
+
+        // GIVEN
+
+        Mockito.when(personService.update(any(Person.class))).thenReturn(personMock);
+        // WHEN
+        // THEN
+        this.mockMvc
+                .perform(put("/person/put")
+                        .content(asJsonString(new Person(firstNameConst, lastNameConst, addressConst, cityConst,
+                                zipConst, phoneConst, emailConst)))
+                        .contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+
+    }
+
+
+    @Test
     public void PersonController_addPersonTest() throws Exception {
 
         // GIVEN
@@ -68,7 +103,7 @@ class PersonControllerTest {
         // WHEN
         // THEN
         this.mockMvc
-                .perform(post("/person")
+                .perform(post("/person/post")
                         .content(asJsonString(new Person(firstNameConst, lastNameConst, addressConst, cityConst,
                                 zipConst, phoneConst, emailConst)))
                         .contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
@@ -85,7 +120,7 @@ class PersonControllerTest {
         Mockito.when(personService.save(any(Person.class))).thenReturn(personMock);
         // WHEN
         // THEN
-        this.mockMvc.perform(post("/person")
+        this.mockMvc.perform(post("/person/post")
                 .content(asJsonString(new Person(firstNameConst, lastNameConst, addressConst, cityConst, zipConst,
                         phoneConst, "wrongEmail")))
                 .contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
@@ -93,23 +128,6 @@ class PersonControllerTest {
 
     }
 
-
-    @Test
-    public void PersonController_PutPersonTest() throws Exception {
-
-        // GIVEN
-
-        Mockito.when(personService.update(any(Person.class))).thenReturn(personMock);
-        // WHEN
-        // THEN
-        this.mockMvc
-                .perform(put("/person")
-                        .content(asJsonString(new Person(firstNameConst, lastNameConst, addressConst, cityConst,
-                                zipConst, phoneConst, emailConst)))
-                        .contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk());
-
-    }
 
     @Test
     public void PersonController_PutNotExistingPersonTest() throws Exception {
@@ -130,40 +148,7 @@ class PersonControllerTest {
 
 
 
-    @Test
-    public void PersonController_getAnExistingPersonTest() throws Exception {
 
-        // GIVEN
-        List<Person> listPersonTest = new ArrayList<>();
-        listPersonTest.add(personMock);
-
-        Mockito.when(personService.findPerson(any(String.class), any(String.class))).thenReturn(listPersonTest);
-        // WHEN
-        // THEN
-        this.mockMvc
-                .perform(get("/person?firstname=" + firstNameConst + "&lastname=" + lastNameConst)
-                        .contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk()).andExpect(jsonPath("$..firstName").value(firstNameConst))
-                .andExpect(jsonPath("$..lastName").value(lastNameConst));
-
-    }
-
-    @Test
-    public void PersonController_DeletePersonTest() throws Exception {
-
-        // GIVEN
-
-        Mockito.when(personService.delete(any(String.class), any(String.class))).thenReturn(true);
-        // WHEN
-        // THEN
-        this.mockMvc
-                .perform(delete("/person?firstname=" + firstNameConst + "&lastname=" + lastNameConst)
-                        .content(asJsonString(new Person(firstNameConst, lastNameConst, addressConst, cityConst,
-                                zipConst, phoneConst, emailConst)))
-                        .contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
-                .andExpect(content().string("Deleted person : firstnametest lastnametest"))
-                .andExpect(status().isOk());
-    }
 
     @Test
     public void CommunityEmailController_Test() throws Exception {

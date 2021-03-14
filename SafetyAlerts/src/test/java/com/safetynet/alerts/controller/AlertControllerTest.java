@@ -1,7 +1,11 @@
-package controller;
+package com.safetynet.alerts.controller;
 
+
+import com.safetynet.alerts.model.MedicalRecord;
+import com.safetynet.alerts.model.url.ChildInfo;
+import com.safetynet.alerts.model.url.PhoneInfo;
+import com.safetynet.alerts.services.PersonService;
 import org.junit.jupiter.api.Test;
-
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
@@ -11,22 +15,19 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import static org.mockito.ArgumentMatchers.any;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.safetynet.alerts.model.MedicalRecord;
-import com.safetynet.alerts.model.url.ChildInfo;
-import com.safetynet.alerts.model.url.PhoneInfo;
-import com.safetynet.alerts.services.PersonService;
+import static org.mockito.ArgumentMatchers.any;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
 @RunWith(MockitoJUnitRunner.class)
 @SpringBootTest
+@AutoConfigureMockMvc
 class AlertControllerTest {
 
     @Autowired

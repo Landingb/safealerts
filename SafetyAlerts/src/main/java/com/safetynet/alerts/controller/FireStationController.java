@@ -1,24 +1,22 @@
 package com.safetynet.alerts.controller;
 
-import java.util.List;
-
-import com.safetynet.alerts.exceptions.FireStationNotFound;
-import com.safetynet.alerts.model.FireStation;
-import com.safetynet.alerts.model.url.FloodHome;
-import com.safetynet.alerts.model.url.InfoPersonFull;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.http.converter.json.MappingJacksonValue;
-
 import com.fasterxml.jackson.databind.ser.FilterProvider;
 import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
+import com.safetynet.alerts.exceptions.FireStationNotFound;
+import com.safetynet.alerts.model.FireStation;
 import com.safetynet.alerts.model.url.FireStationCoverage;
+import com.safetynet.alerts.model.url.FloodHome;
+import com.safetynet.alerts.model.url.InfoPersonFull;
 import com.safetynet.alerts.services.FireStationService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.converter.json.MappingJacksonValue;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @RestController
@@ -98,7 +96,7 @@ public class FireStationController {
             logger.info("Modified firestation : " + fireStationModified.toString());
             return fireStationModified;
         } else {
-            logger.error("Modified firestation : KO");
+            logger.error("Modified firestation : not ok");
             throw new FireStationNotFound(fireStation.toString());
         }
     }
@@ -110,7 +108,7 @@ public class FireStationController {
            logger.info("deleted firestation :" + stationsDeleted.toString());
            return stationsDeleted;
        } else {
-           logger.error("removeFireStation: KO");
+           logger.error("removeFireStation: not  ok");
            throw new FireStationNotFound(fireStation.toString());       }
     }
 

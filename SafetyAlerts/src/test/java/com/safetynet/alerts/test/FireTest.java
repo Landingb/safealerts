@@ -1,10 +1,6 @@
-package Test;
+package com.safetynet.alerts.test;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +8,11 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
 @RunWith(MockitoJUnitRunner.class)
@@ -25,7 +25,7 @@ class FireTest {
     void getFireListPersonWithExistingAddressTest() throws Exception {
         // GIVEN
         // WHEN //THEN
-        String body = "[{\"firstName\":\"Firstnametest1\",\"lastName\":\"Lastnametest1\",\"age\":19,"
+        String body = "[{\"firstName\":\"Firstnametest1\",\"lastName\":\"Lastnametest1\",\"age\":20,"
                 + "\"phone\":\"phonetest1\",\"medications\":[\"med1\"],\"allergies\":[\"allergi1\"]},"
                 + "{\"firstName\":\"Firstnametest11\",\"lastName\":\"Lastnametest1\",\"age\":0,"
                 + "\"phone\":\"phonetest1\",\"medications\":null,\"allergies\":null}]";

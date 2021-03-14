@@ -1,9 +1,4 @@
-package Test;
-
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+package com.safetynet.alerts.test;
 
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -14,10 +9,16 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 @SpringBootTest
 @RunWith(MockitoJUnitRunner.class)
 @AutoConfigureMockMvc
-public class PersonInfoTest {
+class PersonInfoTest {
+
     @Autowired
     private MockMvc mockMvc;
 
@@ -26,26 +27,13 @@ public class PersonInfoTest {
         // GIVEN
         // WHEN //THEN
         String body = "[{\"firstName\":\"Firstnametest1\",\"lastName\":\"Lastnametest1\","
-                + "\"address\":\"adresstest1\",\"age\":19,\"email\":\"emailtest1@email.com\",\"medications\":[\"med1\"],"
+                + "\"address\":\"adresstest1\",\"age\":20,\"email\":\"emailtest1@email.com\",\"medications\":[\"med1\"],"
                 + "\"allergies\":[\"allergi1\"]}]";
 
         this.mockMvc
                 .perform(get("/personInfo?firstName=Firstnametest1&lastName=Lastnametest1")
                         .accept(MediaType.APPLICATION_JSON))
                 .andDo(print()).andExpect(content().json(body)).andExpect(status().isOk());
-    }
-
-    @Test
-    void getinfoPersonWithJustLastNameTest() throws Exception {
-        // GIVEN
-        // WHEN //THEN
-        String body = "[{\"firstName\":\"Firstnametest1\",\"lastName\":\"Lastnametest1\",\"address\":\"adresstest1\","
-                + "\"age\":19,\"email\":\"emailtest1@email.com\",\"medications\":[\"med1\"],\"allergies\":[\"allergi1\"]},"
-                + "{\"firstName\":\"Firstnametest11\",\"lastName\":\"Lastnametest1\",\"address\":\"adresstest1\""
-                + ",\"age\":0,\"email\":\"emailtest1@email.com\",\"medications\":null,\"allergies\":null}]";
-
-        this.mockMvc.perform(get("/personInfo?firstName=&lastName=Lastnametest1").accept(MediaType.APPLICATION_JSON))
-                .andExpect(content().json(body)).andExpect(status().isOk());
     }
 
     @Test

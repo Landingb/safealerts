@@ -1,7 +1,11 @@
-package repository;
+package com.safetynet.alerts.repository;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.within;
+import com.safetynet.alerts.model.MedicalRecord;
+import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
+import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -11,14 +15,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.safetynet.alerts.repository.MedicalRecordsRepository;
-import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-
-import com.safetynet.alerts.model.MedicalRecord;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.within;
 
 @SpringBootTest
 @RunWith(MockitoJUnitRunner.class)

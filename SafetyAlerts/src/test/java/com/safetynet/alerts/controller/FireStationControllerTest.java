@@ -1,7 +1,10 @@
-package controller;
+package com.safetynet.alerts.controller;
 
+import com.safetynet.alerts.model.FireStation;
+import com.safetynet.alerts.model.url.FireStationCoverage;
 import com.safetynet.alerts.model.url.FloodHome;
 import com.safetynet.alerts.model.url.InfoPersonFull;
+import com.safetynet.alerts.services.FireStationService;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -13,17 +16,14 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static controller.PersonControllerTest.asJsonString;
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.safetynet.alerts.controller.PersonControllerTest.asJsonString;
 import static org.mockito.ArgumentMatchers.any;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import java.util.ArrayList;
-import java.util.List;
-
-import com.safetynet.alerts.model.FireStation;
-import com.safetynet.alerts.model.url.FireStationCoverage;
-import com.safetynet.alerts.services.FireStationService;
 
 @SpringBootTest
 @RunWith(MockitoJUnitRunner.class)
@@ -58,7 +58,7 @@ class FireStationControllerTest {
         Mockito.when(fireStationService.update(any(FireStation.class))).thenReturn(fireStationMock);
 
         //WHEN //THEN return the station added
-        mockMvc.perform(put("/firestation")
+        mockMvc.perform(put("/firestation/put")
                 .content(asJsonString(new FireStation("stationtest","addresstest")))
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
@@ -69,7 +69,7 @@ class FireStationControllerTest {
     }
 
     @Test
-    public void FirestationController_removeFireStationTest() throws Exception {
+    public void FireStationController_removeFireStationTest() throws Exception {
 
         //GIVEN :
         fireStationMock = new FireStation();
@@ -80,7 +80,7 @@ class FireStationControllerTest {
         Mockito.when(fireStationService.delete(any(FireStation.class))).thenReturn(listFireStation);
 
         //WHEN //THEN return the station added
-        mockMvc.perform(delete("/firestation")
+        mockMvc.perform(delete("/firestation/delete")
                 .content(asJsonString(new FireStation("stationtest","addresstest")))
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
@@ -148,7 +148,7 @@ class FireStationControllerTest {
 
         // WHEN //THEN return the medical record
         mockMvc.perform(
-                get("/flood?stations=1").contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
+                get("/flood/stations?stations=1").contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk()).andExpect(jsonPath("$..address").value("addresstest"));
 
     }

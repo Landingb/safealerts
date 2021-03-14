@@ -1,17 +1,12 @@
-package services;
+package com.safetynet.alerts.services;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.ArgumentMatchers.any;
-
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
+import com.safetynet.alerts.model.MedicalRecord;
+import com.safetynet.alerts.model.Person;
+import com.safetynet.alerts.model.url.ChildInfo;
+import com.safetynet.alerts.model.url.CommunityEmail;
+import com.safetynet.alerts.model.url.InfoPersonFull;
+import com.safetynet.alerts.model.url.PhoneInfo;
 import com.safetynet.alerts.repository.PersonRepository;
-import com.safetynet.alerts.services.*;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -20,15 +15,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
-import com.safetynet.alerts.model.MedicalRecord;
-import com.safetynet.alerts.model.Person;
-import com.safetynet.alerts.model.url.ChildInfo;
-import com.safetynet.alerts.model.url.CommunityEmail;
-import com.safetynet.alerts.model.url.InfoPersonFull;
-import com.safetynet.alerts.model.url.PhoneInfo;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.ArgumentMatchers.any;
 
 @SpringBootTest
 @RunWith(MockitoJUnitRunner.class)

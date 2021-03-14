@@ -1,7 +1,16 @@
-package services;
+package com.safetynet.alerts.services;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.ArgumentMatchers.any;
+import com.safetynet.alerts.model.MedicalRecord;
+import com.safetynet.alerts.model.Person;
+import com.safetynet.alerts.repository.MedicalRecordsRepository;
+import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mockito;
+import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.text.ParseException;
 import java.time.LocalDateTime;
@@ -11,29 +20,18 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import com.safetynet.alerts.repository.MedicalRecordsRepository;
-import com.safetynet.alerts.services.ServiceUtilImpl;
-import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
-import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-
-
-import com.safetynet.alerts.model.MedicalRecord;
-import com.safetynet.alerts.model.Person;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.ArgumentMatchers.any;
 
 
 
-@SpringBootTest
 @RunWith(MockitoJUnitRunner.class)
-//@AutoConfigureMockMvc
-public class ServiceUtilTest {
+@SpringBootTest
+@AutoConfigureMockMvc
+class ServiceUtilTest {
 
     @Autowired
-    ServiceUtilImpl serviceUtil;
+    ServiceUtil serviceUtil;
 
     @MockBean
     MedicalRecordsRepository medicalRecordsDAOMock;
@@ -67,7 +65,7 @@ public class ServiceUtilTest {
 
         assertThat(serviceUtil.calculateAge(birthDay)).isEqualTo(0);
     }
-
+    @Test
     public static Date addYears(Date date, int nb) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);

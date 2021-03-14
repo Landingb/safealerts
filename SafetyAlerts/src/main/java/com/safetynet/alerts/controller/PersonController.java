@@ -1,26 +1,25 @@
 package com.safetynet.alerts.controller;
 
-import java.util.List;
-
 import com.fasterxml.jackson.databind.ser.FilterProvider;
 import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 import com.safetynet.alerts.exceptions.PersonAddException;
 import com.safetynet.alerts.exceptions.PersonBadParameter;
 import com.safetynet.alerts.exceptions.PersonNotFound;
+import com.safetynet.alerts.model.Person;
 import com.safetynet.alerts.model.url.ChildInfo;
 import com.safetynet.alerts.model.url.CommunityEmail;
 import com.safetynet.alerts.model.url.InfoPersonFull;
 import com.safetynet.alerts.model.url.PhoneInfo;
+import com.safetynet.alerts.services.PersonService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.converter.json.MappingJacksonValue;
 import org.springframework.web.bind.annotation.*;
-import com.safetynet.alerts.model.Person;
-import com.safetynet.alerts.services.PersonService;
 
 import javax.validation.Valid;
+import java.util.List;
 
 
 @RestController
@@ -92,7 +91,7 @@ public class PersonController {
     public Person addPerson(@Valid @RequestBody Person person){
         Person personAdd = personService.save(person);
         if(personAdd == null){
-            logger.error("addPerson : KO");
+            logger.error("addPerson : not ok");
             throw new PersonAddException("Add " + person.toString() + ": ERROR");
         }
         logger.info("Add "+personAdd.toString());

@@ -39,7 +39,7 @@ public class MedicalRecordController {
     public MedicalRecord addMedicalRecord(@RequestBody MedicalRecord medicalRecord){
         MedicalRecord recordAdd = medicalRecordService.save(medicalRecord);
         if(medicalRecord==null){
-            logger.error("addMedicalRecord KO");
+            logger.error("addMedicalRecord not ok");
             throw new MedicalRecordPersonNotFound(medicalRecord.getFirstName()+" "+medicalRecord.getLastName());
         }
         logger.info("created medicalrecord:"+medicalRecord.getFirstName()+" "+medicalRecord.getLastName());
@@ -50,7 +50,7 @@ public class MedicalRecordController {
     public MedicalRecord modifyMedicalRecord(@RequestBody MedicalRecord medicalRecord){
         MedicalRecord recordModified = medicalRecordService.update(medicalRecord);
         if(recordModified==null){
-            logger.error("modifyMedicalRecored KO");
+            logger.error("modifyMedicalRecored not ok");
             throw new MedicalRecordNotFound(medicalRecord.getFirstName()+" "+medicalRecord.getLastName());
         }
         logger.info("modified medicalrecord: "+ medicalRecord.getFirstName()+" "+medicalRecord.getLastName());
@@ -64,7 +64,7 @@ public class MedicalRecordController {
             logger.info("Deleteted medicalrecord :"+medicalRecordName);
             return "Deleted medicalrecord :"+medicalRecordName;
         } else{
-            logger.error("removeMedicalRecord KO");
+            logger.error("removeMedicalRecord not ok");
             throw new MedicalRecordNotFound(medicalRecordName);
         }
     }

@@ -1,8 +1,6 @@
-package repository;
+package com.safetynet.alerts.repository;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import com.safetynet.alerts.repository.FireStationRepository;
+import com.safetynet.alerts.model.FireStation;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
@@ -10,8 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 
-
-import com.safetynet.alerts.model.FireStation;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 @RunWith(MockitoJUnitRunner.class)
@@ -63,31 +60,6 @@ class FireStationRepositoryTest {
 
     }
 
-    @Test
-    public void deleteOneExistingFireStationByAdressTest() {
-
-        // GIVEN
-        FireStation fireStationDelete = new FireStation("delete", "");
-
-        // WHEN
-
-        // THEN
-        assertThat(fireStationRepository.deleteFirestation(fireStationDelete).size()).isEqualTo(1);
-
-    }
-
-    @Test
-    public void deleteOneExistingFireStationByStationTest() {
-
-        // GIVEN
-        FireStation fireStationDelete = new FireStation("", "delete");
-
-        // WHEN
-
-        // THEN
-        assertThat(fireStationRepository.deleteFirestation(fireStationDelete).size()).isEqualTo(1);
-
-    }
 
     @Test
     public void deleteOneExistingFireStationByAdressAndStationTest() {
@@ -120,10 +92,5 @@ class FireStationRepositoryTest {
         assertThat(fireStationRepository.getadressFireStationByStation("1").size()).isEqualTo(1);
     }
 
-    @Test
-    public void getAddressByStationNotExistingTest() {
-
-        assertThat(fireStationRepository.getadressFireStationByStation("5").size()).isEqualTo(0);
-    }
 
 }

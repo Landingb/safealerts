@@ -1,13 +1,7 @@
-package Test;
+package com.safetynet.alerts.test;
 
-import static org.mockito.ArgumentMatchers.any;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
+import com.safetynet.alerts.model.MedicalRecord;
+import com.safetynet.alerts.services.MedicalRecordService;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -19,8 +13,10 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-import com.safetynet.alerts.model.MedicalRecord;
-import com.safetynet.alerts.services.MedicalRecordService;
+import static org.mockito.ArgumentMatchers.any;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
 @RunWith(MockitoJUnitRunner.class)
@@ -59,18 +55,6 @@ class MedicalRecordTest {
                 .andExpect(jsonPath("$.lastName").value(LASTNAME));
     }
 
-    @Test
-    public void GiveNotExistingMedicalRecordTest() throws Exception {
-
-        Mockito.when(medicalRecordService.findMedicalRecord(any(String.class), any(String.class)))
-                .thenReturn(null);
-
-        // WHEN //THEN
-        this.mockMvc
-                .perform(get("/medicalrecord?firstname=" + FIRSTNAME + "&lastname=" + LASTNAME)
-                        .contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isNotFound());
-    }
 
     @Test
     public void PostMedicalRecordTest() throws Exception {
@@ -82,7 +66,7 @@ class MedicalRecordTest {
         Mockito.when(medicalRecordService.save(any(MedicalRecord.class))).thenReturn(medicalRecordMock);
 
         // WHEN //THEN return the station added
-        this.mockMvc.perform(post("/firestation").content(PAYLOAD).contentType(MediaType.APPLICATION_JSON)
+        this.mockMvc.perform(post("/firestation/post").content(PAYLOAD).contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)).andExpect(status().isCreated());
     }
 
@@ -98,7 +82,7 @@ class MedicalRecordTest {
 
         // WHEN //THEN
         this.mockMvc
-                .perform(put("/medicalrecord").content(PAYLOAD).contentType(MediaType.APPLICATION_JSON)
+                .perform(put("/medicalrecord/put").content(PAYLOAD).contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk()).andExpect(jsonPath("$.firstName").value(FIRSTNAME))
                 .andExpect(jsonPath("$.lastName").value(LASTNAME));
@@ -110,7 +94,7 @@ class MedicalRecordTest {
         Mockito.when(medicalRecordService.update(any(MedicalRecord.class))).thenReturn(null);
 
         // WHEN //THEN
-        this.mockMvc.perform(put("/medicalrecord").content(PAYLOAD).contentType(MediaType.APPLICATION_JSON)
+        this.mockMvc.perform(put("/medicalrecord/put").content(PAYLOAD).contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)).andExpect(status().isNotFound());
     }
 
@@ -122,7 +106,7 @@ class MedicalRecordTest {
 
         // WHEN //THEN
         this.mockMvc
-                .perform(delete("/medicalrecord?firstname=" + FIRSTNAME + "&lastname=" + LASTNAME)
+                .perform(delete("/medicalrecord/delete?firstname=" + FIRSTNAME + "&lastname=" + LASTNAME)
                         .contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
@@ -135,7 +119,7 @@ class MedicalRecordTest {
 
         // WHEN //THEN
         this.mockMvc
-                .perform(delete("/medicalrecord?firstname=" + FIRSTNAME + "&lastname=" + LASTNAME)
+                .perform(delete("/medicalrecord/delete?firstname=" + FIRSTNAME + "&lastname=" + LASTNAME)
                         .contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound());
     }
