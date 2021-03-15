@@ -30,7 +30,7 @@ public class Database {
 
         ObjectMapper mapper = new ObjectMapper();
         JSONParser parser = new JSONParser();
-        Object obj = parser.parse(new FileReader("C:\\Users\\madna\\Documents\\OC-parcours java\\Projet4\\L4\\SafetyAlerts\\src\\main\\resources\\data.json"));
+        Object obj = parser.parse(new FileReader("src/main/resources/data.json"));
         JSONObject jsonObject = (JSONObject) obj;
         JSONArray personsList = (JSONArray) jsonObject.get("persons");
         JSONArray recordList = (JSONArray) jsonObject.get("medicalrecords");
