@@ -1,11 +1,10 @@
 package com.safetynet.alerts.repository;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import com.safetynet.alerts.model.Person;
 import org.springframework.stereotype.Repository;
 
-import com.safetynet.alerts.model.Person;
+import java.util.ArrayList;
+import java.util.List;
 
 @Repository
 public class PersonRepositoryRepositoryImpl implements PersonRepository {
@@ -64,10 +63,12 @@ public class PersonRepositoryRepositoryImpl implements PersonRepository {
 
     @Override
     public boolean deletePerson(String firstName, String lastName) {
-        for (Person p:persons){
-            if(p.getFirstName().contentEquals(firstName)&&(p.getLastName().contentEquals(lastName)));
-            persons.remove(p);
-            return true;
+
+        for (Person p : persons) {
+            if (p.getFirstName().contentEquals(firstName) && p.getLastName().contentEquals(lastName)) {
+                persons.remove(p);
+                return true;
+            }
         }
 
         return false;
